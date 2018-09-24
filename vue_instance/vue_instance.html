@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div id="app">
+        <div>
+            {{doubleMustache}}
+        </div>
+        <!--Vue中没有v-bind进行绑定文本在vue中v-bind属于属性绑定-->
+        <!--<div v-bind="bindMessage"></div>-->
+        <!--v-bind用于属性绑定-->
+        <div v-bind:title="bindMessage">鼠标移到我身上</div>
+        <!--v-bind简易方式-->
+        <div :title="bindMessage">鼠标移到我身上</div>
+        <div v-html="bindHtml"></div>
+        <div id="htmlFeature"></div>
+        <!--if-->
+        <div v-if="seen">默认你可以看到我</div>
+        <!--if-else-->
+        <div v-if="seen">默认你可以看到我</div>
+        <div v-else>当条件为假时可以看到我</div>
+        <!--if-else if-else-->
+        <div v-if="count === 1">count是1时你可以看到我</div>
+        <div v-else-if="count === 2">count是2时你可以看到我</div>
+        <div v-else>count不是1或者2时你可以看到我</div>
+        <!--v-for-->
+        <div>
+            <ol>
+                <li v-for="todo in todos">
+                    {{todo.text}}
+                </li>
+            </ol>
+            <ol>
+                <li v-for="(value, key) in objs">
+                    <span>The key is {{key}}, The value is {{value}}</span>
+                </li>
+            </ol>
+        </div>
+        <!--method和computed的区别-->
+        <div>
+            <!--method-->
+            <div>
+                <span>请输入需要反转的字符串:</span>
+                <input type="text" v-model="message"/>
+                <button v-on:click="reversedMessageFun">反转</button>
+                <br/>
+                <span>反转后的字符串是: {{reversedMessage}}</span>
+            </div>
+            <!--computed-->
+            <div>
+                <span>请输入需要反转的字符串:</span>
+                <input type="text" v-model="computedMessage"/>
+                <button v-on:click="reversedComputedMessageFun">反转</button>
+                <br/>
+                <span>反转后的字符串是: {{reversedComputedMessage}}</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../lib/vue.js"></script>
+<script src="./vue_instance.js"></script>
+</html>
