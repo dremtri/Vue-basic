@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+</head>
+<body>
+    <div id="app">
+        <my-component-head></my-component-head>
+        <my-component-body></my-component-body>
+        <!--会报错浏览器将其解析为<mycomponentbody>-->
+        <!--<MyComponentBody></MyComponentBody>-->
+        <component-footer></component-footer>
+
+        <!--组件数据传递-->
+        <div v-bind:style="{color: color}">
+            <blog-element v-for="blog in blogs"
+                          v-bind:key="blog.id"
+                          v-on:change-color-event="changeColorParent"
+                          v-bind:blog="blog"></blog-element>
+        </div>
+
+        <!--插槽-->
+        <slot-component>
+            hello kk
+        </slot-component>
+        <!--具名插槽-->
+        <slot-component-name>
+            <template slot="header">
+                <h1>Here might be a page title</h1>
+            </template>
+            <p>A paragraph for the main content</p>
+            <p>And another one.</p>
+            <template slot="footer">
+                <p>Here's some contact info</p>
+            </template>
+        </slot-component-name>
+        <!--编译作用域-->
+        <slot-component>
+            {{message}}
+        </slot-component>
+    </div>
+</body>
+<script src="../lib/vue.js"></script>
+<script src="component_demo.js"></script>
+</html>
